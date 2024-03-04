@@ -5,12 +5,13 @@
   "keywords": [
     "RSS"
   ],
+  "type": "module",
   "homepage": "https://github.com/DIYgod/RSSHub#readme",
   "bugs": {
     "url": "https://github.com/DIYgod/RSSHub/issues"
   },
   "repository": {
-    "type": "module",
+    "type": "git",
     "url": "git+https://github.com/DIYgod/RSSHub.git"
   },
   "license": "MIT",
