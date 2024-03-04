@@ -1,6 +1,6 @@
-import 'dotenv/config';
-import randUserAgent from '@/utils/rand-user-agent';
-import got from 'got';
+require('dotenv').config();
+const randUserAgent = require('./utils/rand-user-agent'); // 注意路径可能需要根据实际情况调整
+const got = require('got');
 
 let envs = process.env;
 
