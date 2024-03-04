@@ -10,7 +10,7 @@
     "url": "https://github.com/DIYgod/RSSHub/issues"
   },
   "repository": {
-    "type": "git",
+    "type": "module",
     "url": "git+https://github.com/DIYgod/RSSHub.git"
   },
   "license": "MIT",
