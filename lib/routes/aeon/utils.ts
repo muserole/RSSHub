@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { getCurrentPath } from '@/utils/helpers';
 const __dirname = getCurrentPath(import.meta.url);
 
@@ -17,6 +16,9 @@ const getData = async (ctx, list) => {
 
                 const data = JSON.parse($('script#__NEXT_DATA__').text());
                 const type = data.props.pageProps.article.type.toLowerCase();
+
+                item.pubDate = new Date(data.props.pageProps.article.publishedAt).toUTCString();
+
                 if (type === 'video') {
                     item.description = art(path.join(__dirname, 'templates/video.art'), { article: data.props.pageProps.article });
                 } else {
@@ -30,14 +32,14 @@ const getData = async (ctx, list) => {
                     // e.g. https://aeon.co/essays/how-to-mourn-a-forest-a-lesson-from-west-papua .
                     // But that's very rare.
 
-                    item.author = data.props.pageProps.article.authors.map((author) => author.displayName).join(', ');
+                    item.author = data.props.pageProps.article.authors.map((author) => author.name).join(', ');
 
                     const article = data.props.pageProps.article;
                     const capture = load(article.body);
-                    const banner = article.thumbnail?.urls?.header;
+                    const banner = article.image?.url;
                     capture('p.pullquote').remove();
 
-                    const authorsBio = article.authors.map((author) => '<p>' + author.displayName + author.authorBio.replaceAll(/^<p>/g, ' ')).join('');
+                    const authorsBio = article.authors.map((author) => '<p>' + author.name + author.authorBio.replaceAll(/^<p>/g, ' ')).join('');
 
                     item.description = art(path.join(__dirname, 'templates/essay.art'), { banner, authorsBio, content: capture.html() });
                 }
@@ -50,6 +52,4 @@ const getData = async (ctx, list) => {
     return items;
 };
 
-module.exports = {
-    getData,
-};
+export { getData };

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { load } from 'cheerio';
 import got from '@/utils/got';
 import { config } from '@/config';
@@ -48,7 +47,7 @@ async function getCookie(cache) {
     let py_loginauth = await cache.get(loginauth_key);
     if (!py_loginauth) {
         if (!config.pianyuan || !config.pianyuan.cookie) {
-            throw new Error('pianyuan is disabled due to the lack of <a href="https://docs.rsshub.app/install/#pei-zhi-bu-fen-rss-mo-kuai-pei-zhi">relevant config</a>');
+            throw new Error('pianyuan is disabled due to the lack of <a href="https://docs.rsshub.app/deploy/config#route-specific-configurations">relevant config</a>');
         }
         py_loginauth = config.pianyuan.cookie;
     }
@@ -83,7 +82,4 @@ async function request(link, cache) {
     return response;
 }
 
-module.exports = {
-    ProcessFeed,
-    request,
-};
+export default { ProcessFeed, request };

@@ -1,9 +1,23 @@
-// @ts-nocheck
+import { Route } from '@/types';
 import { load } from 'cheerio';
 import { parseDate } from '@/utils/parse-date';
 import puppeteer from '@/utils/puppeteer';
 
-export default async (ctx) => {
+export const route: Route = {
+    path: '/',
+    radar: [
+        {
+            source: ['uraaka-joshi.com/'],
+            target: '',
+        },
+    ],
+    name: 'Unknown',
+    maintainers: ['SettingDust', 'Halcao'],
+    handler,
+    url: 'uraaka-joshi.com/',
+};
+
+async function handler() {
     const link = `https://www.uraaka-joshi.com/`;
     const title = `裏垢女子まとめ`;
 
@@ -40,7 +54,7 @@ export default async (ctx) => {
     const $ = load(html);
     const list = $('.grid-cell');
 
-    ctx.set('data', {
+    return {
         title,
         link,
         item:
@@ -87,5 +101,5 @@ export default async (ctx) => {
                     };
                 })
                 .get(),
-    });
-};
+    };
+}

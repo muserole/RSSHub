@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { getCurrentPath } from '@/utils/helpers';
 const __dirname = getCurrentPath(import.meta.url);
 
@@ -89,7 +88,7 @@ const getDetails = (cache, simples, limit) => Promise.all(simples.slice(0, limit
 
 const getTorrents = async (cache, simples, limit) => {
     if (!config.nhentai || !config.nhentai.username || !config.nhentai.password) {
-        throw new Error('nhentai RSS with torrents is disabled due to the lack of <a href="https://docs.rsshub.app/en/install/#configuration-route-specific-configurations">relevant config</a>');
+        throw new Error('nhentai RSS with torrents is disabled due to the lack of <a href="https://docs.rsshub.app/deploy/config#route-specific-configurations">relevant config</a>');
     }
     const cookie = await getCookie(config.nhentai.username, config.nhentai.password, cache);
     if (!cookie) {
@@ -143,9 +142,4 @@ const getDetail = async (simple) => {
     };
 };
 
-module.exports = {
-    baseUrl,
-    getSimple,
-    getDetails,
-    getTorrents,
-};
+export { baseUrl, getSimple, getDetails, getTorrents };

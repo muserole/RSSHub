@@ -1,12 +1,11 @@
-// @ts-nocheck
-module.exports = {
+export default {
     wh: {
         news: {
             name: '山东大学（威海）新闻网',
             route: '/news',
             source: ['/*path', '/'],
             titlePrefix: '(威海)新闻网|',
-            docs: 'https://docs.rsshub.app/university#shan-dong-da-xue-wei-hai',
+            docs: 'https://docs.rsshub.app/routes/university#shan-dong-da-xue-wei-hai',
             getTarget(url) {
                 return this.route + '/' + url.replace(/\.htm$/, '');
             },
@@ -63,7 +62,7 @@ module.exports = {
             route: '/jwc',
             source: ['/*path', '/'],
             titlePrefix: '(威海)教务处|',
-            docs: 'https://docs.rsshub.app/university#shan-dong-da-xue-wei-hai',
+            docs: 'https://docs.rsshub.app/routes/university#shan-dong-da-xue-wei-hai',
             getTarget(url) {
                 return this.route + '/' + url.replace(/\.htm$/, '');
             },

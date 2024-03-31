@@ -1,4 +1,3 @@
-// @ts-nocheck
 const config = {
     bwc: { title: '武装部保卫处', id: 'tzgg' },
     career: { title: '本科就业信息网', id: 'tzgg', listSelector: 'ul.newsList', pubDateSelector: 'li.span2.y', descriptionSelector: '.aContent' },
@@ -42,7 +41,7 @@ const config = {
     office: { title: '校长办公室（档案馆）', id: '389' },
     rpstec: { title: '国家新能源电力系统实验教学示范中心', id: '1366' },
     rsc: { title: '党委教师工作部/人事处', id: '1695' },
-    rwysxy: { title: '人文艺术学院', id: '3089' },
+    rwysxy: { title: '人文艺术学院', id: '3089', listSelector: 'li.list-item', pubDateSelector: 'div.item-publishdate' },
     sjc: { title: '审计处', id: '199' },
     skb: { title: '马克思主义学院', id: '1736' },
     slxy: { title: '数理学院', id: '2063' },
@@ -65,6 +64,4 @@ const config = {
     zzb: { title: '组织部（老干部处、党校）', id: '1534' },
 };
 
-module.exports = {
-    config,
-};
+export { config };
